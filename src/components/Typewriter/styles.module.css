@@ -1,0 +1,22 @@
+/* src/components/Typewriter/styles.module.css */
+
+.typewriterContainer {
+  position: relative; /* Needed if you want cursor absolutely positioned later */
+  display: inline-block; /* Keep it inline with text */
+}
+
+.blinkingCursor {
+  display: inline-block;
+  width: 2px; /* Cursor width */
+  height: 1em; /* Cursor height, relative to font size */
+  background-color: currentColor; /* Matches text color */
+  margin-left: 2px; /* Spacing from text */
+  vertical-align: middle; /* Align with text */
+  animation: blink 0.7s infinite; /* Blinking animation */
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}

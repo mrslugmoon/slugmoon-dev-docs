@@ -1,0 +1,48 @@
+/* src/components/GradientText/styles.module.css */
+
+.gradientTextAnimated {
+  /* Define a wider background for animation */
+  background: linear-gradient(
+    to right,
+    #6a82fb,  /* Start Color 1 */
+    #fc5c7d,  /* Middle Color 2 */
+    #6a82fb,  /* Back to Color 1 for seamless loop */
+    #fc5c7d,  /* Back to Color 2 for seamless loop */
+    #6a82fb   /* Back to Color 1 for seamless loop */
+  );
+  background-size: 200% auto; /* Make the background twice as wide */
+
+  /* Clip the background to the text shape */
+  -webkit-background-clip: text; /* Vendor-prefixed for WebKit browsers */
+  background-clip: text;       /* Standard property for future compatibility and Firefox */
+
+  -webkit-text-fill-color: transparent; /* Vendor-prefixed for text transparency */
+  color: transparent;                   /* Standard property for text transparency (less crucial but good practice) */
+
+  display: inline-block; /* Essential for correct clipping behavior */
+
+  /* Apply the animation */
+  animation: gradientAnimation 3s linear infinite; /* Name, duration, timing, repetition */
+}
+
+/* Define the animation keyframes */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% center; /* Start of the background animation */
+  }
+  100% {
+    background-position: 100% center; /* End of the background animation */
+  }
+}
+
+/* You can define other non-animated gradient styles here if you want */
+/*
+.gradientPurpleRed {
+  background: linear-gradient(to right, #6A82FB, #FC5C7D);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+*/

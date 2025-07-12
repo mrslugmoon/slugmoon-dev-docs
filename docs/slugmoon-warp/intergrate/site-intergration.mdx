@@ -1,0 +1,28 @@
+---
+sidebar_position: 2
+---
+
+import GradientText from '@site/src/components/GradientText';
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
+# Site Integration
+
+In this section, we will cover how to integrate <span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Warp</GradientText> into your site. This includes embedding the Slugmoon Warp site, using the API, and understanding how to customize the integration to fit your needs.
+
+## Embedding the Slugmoon Warp Site
+To embed the Slugmoon Warp site into your own site, you can use an iframe.
+You can use the following code snippet to embed the Slugmoon Warp site:
+
+```html
+<iframe src="https://warp.slugmoon.lol" title="Slugmoon Warp" width="100%" height="1000px" style="border: none;"></iframe>
+```
+You can adjust the `width` and `height` attributes to fit your site's design.
+It will look something like this:
+:::note
+
+We are using a custom component to display the embedded site in the documentation.
+When you are embedding it in your own site, you wont have the Browser Window around it.
+:::
+<BrowserWindow url="https://warp.slugmoon.lol">
+  <iframe src="https://warp.slugmoon.lol" title="Slugmoon Warp" width="100%" height="1000px" style={{ border: 'none' }} />
+</BrowserWindow>

@@ -1,0 +1,50 @@
+---
+sidebar_position: 1
+---
+
+import GradientText from '@site/src/components/GradientText';
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
+# Engine Integration
+
+In this section, we will cover how to integrate <span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Warp</GradientText> into your game engine. This allows you to perform actions like d-join lock, where they can only join via <span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Warp</GradientText>!
+
+## Adding it to your game
+To add <span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Warp</GradientText> to your game, you can download it via 2 methods:
+
+- **Download the latest version**: You can download the latest version of <span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Warp Game Engine</GradientText> below:
+    <BrowserWindow url="https://warp.slugmoon.lol/download">
+        <iframe src="https://github.com/mrslugmoon/slugmoonwarp/releases/latest" title="Download Slugmoon Warp Game Engine" width="100%" height="1000px" style={{ border: 'none' }} />
+    </BrowserWindow>
+:::warning
+Make sure to download the latest version of <span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Warp Game Engine</GradientText> to ensure compatibility with the latest features and fixes.
+
+Please note that every time it is updated, you will need to redownload the latest version to ensure you have the most up-to-date features and fixes.
+:::
+Place the folder you downloaded in the `ServerScriptService` of your game, then configure the settings in the `ModuleScript` inside the folder to your liking.
+
+- **Require the Slugmoon Warp Game Engine**: In your roblox game, you can require the Slugmoon Warp Game Engine by using the following code snippet:
+```lua title="ModuleScript in ServerScriptService"
+--[[
+    Slugmoon Warp Game Engine
+    This module allows you to integrate Slugmoon Warp into your game.
+    Make sure to require this module in your Module Script.
+]]--
+
+require(112993552440807)
+
+return {
+	whitelist = function(player: Player)
+		if player:GetRankInGroup(game.CreatorId) >= 24 then
+			return true
+		else
+			return false
+		end
+	end
+}
+```
+Configure the `whitelist` function to your liking, it is used to determine whitelists for <span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Warp</GradientText> commands in your game.
+
+:::info
+Make sure to place this code in a ModuleScript in ServerScriptService to ensure it runs correctly.
+:::

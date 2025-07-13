@@ -1,0 +1,44 @@
+---
+sidebar_position: 3
+---
+
+import GradientText from '@site/src/components/GradientText';
+import BrowserWindow from '@site/src/components/BrowserWindow';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Slugmoon Warp API
+
+:::warning
+Advanced users only!
+:::
+
+<span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Warp</GradientText> has a API that was intended to be used for the frontend of <span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Warp</GradientText>, but you can use it for your own projects.
+
+# API Endpoints
+
+At this moment, the API has 1 endpoint:
+
+- **api/game-info/{gameId}**: This endpoint returns information about the game you are trying to join.
+  - **Parameters**:
+    - `gameId`: The ID of the game you want to get information about.
+  - **Response**: A JSON object containing the game information.
+    - **Example**:
+        ```json
+        {
+                "gameId": 123456789,
+                "serverId": 987654321,
+                "name": "My Game",
+                "description": "This is a test game.",
+                "creator": {
+                    "id": 123456789,
+                    "name": "Test Creator",
+                    "type": "User", // or "Group"
+                    "isRNVAccount": false,
+                    "hasVerifiedBadge": false
+                },
+                "playing": 0,
+                "visits": 3505,
+                "iconUrl": "https://tr.rbxcdn.com/180DAY-7d82271a5ba86e4e1d0301bcab3d7d2b/512/512/Image/Png/noFilter"
+        }
+        ```

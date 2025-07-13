@@ -100,7 +100,7 @@ const config = {
           {
             href: 'https://github.com/mrslugmoon/slugmoon-suite',
             label: 'GitHub',
-            position: 'center',
+            position: 'right',
           },
         ],
       },

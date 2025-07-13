@@ -140,40 +140,26 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Suite Links',
             items: [
               {
-                label: 'Docs',
-                to: 'intro',
+                label: 'CDN',
+                to: 'https://slugmoon.lol',
               },
+               {
+                label: 'Mail',
+                to: 'https://mail.slugmoon.com',
+              },
+              {
+                label: 'Forum',
+                to: 'https://forum.slugmoon.com',
+              },
+              {
+                label: 'Warp',
+                to: 'https://warp.slugmoon.lol',
+              }
             ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
+          }
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Slugmoon.`,
       },

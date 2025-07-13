@@ -4,6 +4,8 @@ sidebar_position: 1
 
 import GradientText from '@site/src/components/GradientText';
 import BrowserWindow from '@site/src/components/BrowserWindow';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Engine Integration
 
@@ -48,3 +50,29 @@ Configure the `whitelist` function to your liking, it is used to determine white
 :::info
 Make sure to place this code in a ModuleScript in ServerScriptService to ensure it runs correctly.
 :::
+
+## Using the Slugmoon Warp Game Engine
+Once you have added the Slugmoon Warp Game Engine to your game, you can use it to perform various actions such as d-join lock, where players can only join via <span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Warp</GradientText>.
+
+Whitleisted players can use the following commands in your game:
+
+<details>
+  <summary>Who are whitelisted players?</summary>
+
+ Whitelisted players are players that, when put through the `whitelist` function, return `true`. This means that they are allowed to use the Slugmoon Warp Game Engine commands in your game. You can customize the `whitelist` function to determine which players are whitelisted based on their rank in the group or any other criteria you choose.
+</details>
+
+<Tabs>
+  <TabItem label="Disable direct join" default>
+    Say `!djoin off` in your game to disable direct joining. This will prevent players from joining your game directly and will require them to use <span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Warp</GradientText> to join.
+  </TabItem>
+  <TabItem label="Enable direct join">
+  :::info
+  Direct joining is on by default, so you don't need to enable it unless you have disabled it via `!djoin off`.
+
+  You can enable it by default by changing the source code of the Slugmoon Warp Game Engine. (there will be something like `djoinEnabled = false` in the source code, change it to `djoinEnabled = true` soon.)
+  :::
+    Say `!djoin on` in your game to enable direct joining. This will allow players to join your game directly without using <span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Warp</GradientText>.
+  </TabItem>
+</Tabs>
+

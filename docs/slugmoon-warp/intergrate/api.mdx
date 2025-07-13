@@ -6,6 +6,7 @@ import GradientText from '@site/src/components/GradientText';
 import BrowserWindow from '@site/src/components/BrowserWindow';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import UrlInputBox from '@site/src/components/UrlInputBox';
 
 # Slugmoon Warp API
 
@@ -22,6 +23,9 @@ At this moment, the API has 1 endpoint:
 - **api/game-info/(gameId)**: This endpoint returns information about the game you are trying to join.
   - **Parameters**:
     - `gameId`: The ID of the game you want to get information about.
+  - **Method**: GET
+  - **Example**: <UrlInputBox baseUrl="https://warp.slugmoon.lol/api/game-info/" placeholder="Enter Game ID" buttonText="Show Result" />
+
   - **Response**: A JSON object containing the game information.
     - **Example**:
         ```json

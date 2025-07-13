@@ -4,6 +4,23 @@
  * work well for content-centric websites.
  */
 
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Optionally, apply to specific elements if you want to override Docusaurus defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Example: If Docusaurus's default code blocks don't get it, you might target them specifically */
+code, pre {
+  font-family: 'Montserrat', monospace; /* Keep monospace for code, but if you want Montserrat, you can use it */
+}
+
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;

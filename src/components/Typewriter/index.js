@@ -1,6 +1,7 @@
 // src/components/Typewriter/index.js
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css'; // Import the CSS module for cursor styling
+import GradientText from '../GradientText'; // Make sure this path is correct based on your file structure!
 
 /**
  * A React component that animates text as if it's being typed.
@@ -17,18 +18,21 @@ export default function Typewriter({ text, delay = 100, loop = false, eraseDelay
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isErasing, setIsErasing] = useState(false);
-  const [isTypingComplete, setIsTypingComplete] = useState(false); // State to control cursor visibility when typing is "done"
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
 
   useEffect(() => {
     let timeout;
 
-    // Typing logic: If not erasing and still characters to type
+    // Typing logic
     if (!isErasing && currentIndex < text.length) {
       setIsTypingComplete(false); // Not complete while typing
+      // Determine the delay: startDelay for the very first character of a typing sequence, otherwise normal delay
+      const currentCharacterDelay = (currentIndex === 0 && !isErasing) ? startDelay : delay;
+
       timeout = setTimeout(() => {
         setCurrentText(prevText => prevText + text[currentIndex]);
         setCurrentIndex(prevIndex => prevIndex + 1);
-      }, currentIndex === 0 ? startDelay : delay); // Apply startDelay only for the very first character of a sequence
+      }, currentCharacterDelay);
     }
     // Logic to start erasing after full text is typed (if looping)
     else if (loop && currentIndex === text.length && !isErasing) {
@@ -37,7 +41,7 @@ export default function Typewriter({ text, delay = 100, loop = false, eraseDelay
         setIsErasing(true); // Switch to erasing mode
       }, startDelay); // Pause before erasing starts
     }
-    // Erasing logic: If erasing and still characters to erase
+    // Erasing logic
     else if (isErasing && currentIndex > 0) {
       setIsTypingComplete(false); // Not complete while erasing
       timeout = setTimeout(() => {
@@ -63,16 +67,19 @@ export default function Typewriter({ text, delay = 100, loop = false, eraseDelay
 
   return (
     <span className={styles.typewriterContainer}>
-      {currentText}
+      {/* This is the key part: wrapping currentText with GradientText and passing animated={true} */}
+      <GradientText animated={true}>
+        {currentText}
+      </GradientText>
       {/* Conditionally render the blinking cursor */}
       {showCursor && (
         // Cursor shown if typing is complete, or if typing/erasing is in progress.
         // It hides when the text is fully erased and waiting to restart (if looping).
         isTypingComplete ||
-        (!loop && currentIndex < text.length) || // If not looping, show while typing
-        (loop && currentIndex > 0) // If looping, show while typing OR erasing (as long as not fully erased)
+        (!loop && currentIndex < text.length) ||
+        (loop && currentIndex > 0)
       ) && (
-        <span className={styles.blinkingCursor}>|</span>
+        <span className={styles.blinkingCursor}></span>
       )}
     </span>
   );

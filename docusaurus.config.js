@@ -90,6 +90,7 @@ const config = {
           src: '/img/logo.svg',
         },
         items: [
+         
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
@@ -97,6 +98,8 @@ const config = {
             label: 'Docs',
           },
         //  {to: '/blog', label: 'Blog', position: 'left'},
+         {to: '/suggestions', label: 'Suggestions', position: 'left'},
+         
           {
             href: 'https://github.com/mrslugmoon/slugmoon-suite',
             label: 'GitHub',

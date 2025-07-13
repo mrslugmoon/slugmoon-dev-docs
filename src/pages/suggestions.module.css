@@ -1,0 +1,66 @@
+/* src/pages/suggestions.module.css */
+
+.suggestionsPage {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: var(--ifm-background-color);
+  border-radius: var(--ifm-border-radius);
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+.suggestionForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--ifm-font-color-base);
+}
+
+.inputField,
+.textareaField {
+  padding: 10px;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: var(--ifm-border-radius);
+  font-size: 1rem;
+  color: var(--ifm-font-color-base);
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.textareaField {
+  resize: vertical; /* Allow vertical resizing */
+}
+
+.submitButton {
+  padding: 12px 20px;
+  background-color: var(--ifm-color-primary);
+  color: var(--ifm-font-color-inverse);
+  border: none;
+  border-radius: var(--ifm-border-radius);
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.submitButton:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+.formStatus {
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  border-radius: var(--ifm-border-radius);
+  background-color: var(--ifm-color-info); /* Example color */
+  color: var(--ifm-font-color-inverse);
+}

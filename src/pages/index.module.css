@@ -21,3 +21,34 @@
   align-items: center;
   justify-content: center;
 }
+
+
+
+.heroBanner {
+  padding-top: 4rem; /* Keep your existing top padding */
+  padding-bottom: 12rem; /* IMPORTANT: Increase this padding to make space for the wave at the bottom */
+  text-align: center;
+  position: relative; /* Needed for background-position and layering */
+  overflow: hidden; /* Crucial to prevent horizontal scrollbar if the wave slightly overshoots */
+
+  /* Your existing background color for the header (the yellow part in your screenshot) */
+  background-color: #fce47c; /* Use the exact yellow from your screenshot if it's not a Docusaurus variable */
+  color: var(--ifm-font-color-base); /* Ensure text color is readable */
+
+  /* --- SVG Wave Styles --- */
+  background-image: url('/img/wave.svg'); /* Path to your new SVG file */
+  background-repeat: no-repeat; /* Prevents the SVG from tiling */
+  background-position: bottom center; /* Aligns the SVG wave to the bottom and horizontally centers it */
+  background-size: 100% auto; /* Scales the SVG to 100% width, maintaining aspect ratio */
+  /* This ensures the wave fills the bottom of the header */
+}
+
+/* Ensure the section directly below the header has a matching background color */
+.features { /* Assuming your "Fast yet Simple" section uses a class like 'features' */
+  background-color: var(--ifm-background-color); /* This should match the color *below* the wave, e.g., the dark Docusaurus background */
+  padding-top: 2rem; /* Add some padding so content isn't immediately on the wave's peak */
+}
+
+/* Adjust colors for the wave if you want it to blend or contrast differently */
+/* The SVG itself defines the gradient colors: #F78DA7 to #8ED1FC */
+/* If you want different colors, you'll need to edit the SVG file directly */

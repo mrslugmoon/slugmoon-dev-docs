@@ -1,0 +1,16 @@
+<svg width="100%" height="100%" id="svg" viewBox="0 0 1440 590" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+            <stop offset="5%" stop-color="#F78DA7"></stop>
+            <stop offset="95%" stop-color="#8ED1FC"></stop>
+        </linearGradient>
+    </defs>
+    <path d="M 0,600 L 0,150 C 114.56459330143542,174.82296650717706 229.12918660287085,199.64593301435409 308,209 C 386.87081339712915,218.35406698564591 430.0478468899521,212.23923444976077 534,217 C 637.9521531100479,221.76076555023923 802.6794258373205,237.39712918660288 905,216 C 1007.3205741626795,194.60287081339712 1047.2344497607655,136.17224880382776 1126,119 C 1204.7655502392345,101.82775119617226 1322.3827751196172,125.91387559808612 1440,150 L 1440,600 L 0,600 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="0.53" class="transition-all duration-300 ease-in-out delay-150 path-0"></path>
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+            <stop offset="5%" stop-color="#F78DA7"></stop>
+            <stop offset="95%" stop-color="#8ED1FC"></stop>
+        </linearGradient>
+    </defs>
+    <path d="M 0,600 L 0,350 C 112.44976076555025,320.42105263157896 224.8995215311005,290.8421052631579 310,297 C 395.1004784688995,303.1578947368421 452.8516746411484,345.05263157894734 549,337 C 645.1483253588516,328.94736842105266 779.6937799043064,270.94736842105266 887,279 C 994.3062200956936,287.05263157894734 1074.3732057416266,361.15789473684214 1162,384 C 1249.6267942583734,406.84210526315786 1344.8133971291868,378.42105263157896 1440,350 L 1440,600 L 0,600 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
+</svg>

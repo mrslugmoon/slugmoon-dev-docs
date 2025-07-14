@@ -99,7 +99,8 @@ const config = {
           },
         //  {to: '/blog', label: 'Blog', position: 'left'},
          {to: '/suggestions', label: 'Suggestions', position: 'left'},
-         
+          {to: '/slugmoondirectory', label: 'Slugmoon Directory', position: 'left'},
+
           {
             href: 'https://github.com/mrslugmoon/slugmoon-suite',
             label: 'GitHub',

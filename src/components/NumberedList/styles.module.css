@@ -1,0 +1,59 @@
+/* src/components/NumberedList/styles.module.css */
+
+.numberedListContainer {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align content to the left */
+  position: relative;
+  padding-left: 20px; /* Space for the vertical line */
+}
+
+.numberedListContainer::before {
+  content: '';
+  position: absolute;
+  left: 30px; /* Adjust to align with the center of number circles */
+  top: 0;
+  bottom: 0;
+  width: 2px; /* Line thickness */
+  background-color: #333; /* Dark line color */
+  z-index: 0; /* Ensure line is behind circles */
+}
+
+.numberedListItem {
+  display: flex;
+  /* Change align-items to 'center' to vertically center number frame with content */
+  align-items: center;
+  margin-bottom: 30px; /* Space between items, adjust as needed */
+  position: relative; /* For z-index of circle */
+  z-index: 1; /* Ensure circles are above the line */
+}
+
+.numberCircle {
+  width: 40px; /* Size of the circle */
+  height: 40px; /* Size of the circle */
+  border-radius: 50%; /* Make it a circle */
+  background-color: #363636; /* Dark grey background for the circle */
+  color: rgb(255, 255, 255); /* White number text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  flex-shrink: 0; /* Prevent the circle from shrinking */
+  margin-right: 20px; /* Space between circle and content */
+  position: relative; /* Needed for precise positioning */
+  left: -20px; /* Pull it slightly to the left to overlap the vertical line */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: subtle shadow */
+
+  /* Add border for the gap effect, matching the background color of the container */
+  /* This creates the illusion of a gap in the line. */
+  border: 5px solid rgb(230, 174, 70); /* Adjust border-width as needed for gap size */
+                               /* Change 'white' to your page's background color (likely var(--ifm-background-color)) */
+}
+
+.content {
+  flex-grow: 1; /* Allow content to take remaining space */
+  /* Remove padding-top/bottom here if align-items: center handles alignment */
+  /* padding-top: 8px; */
+  /* padding-bottom: 8px; */
+}

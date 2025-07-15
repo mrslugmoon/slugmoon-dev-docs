@@ -4,6 +4,8 @@ sidebar_position: 2
 
 import GradientText from '@site/src/components/GradientText';
 import BrowserWindow from '@site/src/components/BrowserWindow';
+import IframeWindow from '@site/src/components/IframeWindow';
+import Typewriter from '@site/src/components/Typewriter';
 
 # Site Integration
 
@@ -23,6 +25,4 @@ It will look something like this:
 We are using a custom component to display the embedded site in the documentation.
 When you are embedding it in your own site, you wont have the Browser Window around it.
 :::
-<BrowserWindow url="https://warp.slugmoon.lol">
-  <iframe src="https://warp.slugmoon.lol" title="Slugmoon Warp" width="100%" height="1000px" style={{ border: 'none' }} />
-</BrowserWindow>
+<IframeWindow url="https://warp.slugmoon.lol" />

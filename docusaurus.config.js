@@ -10,8 +10,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Slugmoon Suite',
-  tagline: 'Welcome to the Slugmoon Suite hub!',
+  title: 'Slugmoon Developer Docs',
+  tagline: 'Welcome to the Slugmoon Developer Docs!',
   favicon: '/img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -20,7 +20,7 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://suite.slugmoon.com',
+  url: 'https://dev.slugmoon.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -28,7 +28,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'mrslugmoon', // Usually your GitHub org/user name.
-  projectName: 'slugmoon-suite', // Usually your repo name.
+  projectName: 'slugmoon-dev-docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -48,12 +48,14 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+           remarkPlugins: [require('./plugins/remark-icon-plugin')],
 
           routeBasePath: '/', // Set the base path for the docs
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/mrslugmoon/slugmoon-suite/tree/main/',
+          
         },
         blog: false, // Disable the blog feature for now
      //   blog: {
@@ -84,7 +86,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Slugmoon Suite',
+        title: 'Slugmoon Developer Docs',
         logo: {
           alt: 'Logo',
           src: '/img/logo.svg',
@@ -102,7 +104,8 @@ const config = {
           {to: '/slugmoondirectory', label: 'Slugmoon Directory', position: 'left'},
 
           {
-            href: 'https://github.com/mrslugmoon/slugmoon-suite',
+            href: 'https://github.com/mrslugmoon/slugmoon-dev-docs',
+
             label: 'GitHub',
             position: 'right',
           },

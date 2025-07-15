@@ -1,0 +1,178 @@
+---
+title: "Hyra CafePOS Order Logs"
+---
+
+import Typewriter from '@site/src/components/Typewriter';
+import GradientText from '@site/src/components/GradientText';
+import BrowserWindow from '@site/src/components/BrowserWindow';
+import NumberedList from '@site/src/components/NumberedList';
+import Icon from '@site/src/components/Icon';
+
+## Prerequisites
+
+- <Icon name="check" color="green" /> You must have an active Hyra Instance.
+- <Icon name="check" color="green" /> You must be able to create an API key.
+- <Icon name="check" color="green" /> You must own easyPOS's CafePOS.
+
+## Steps
+
+<NumberedList>
+  <div>
+    Create an Exporter; you can use the section below to help you. Return back to this page afterwards.
+  </div>
+  <div>
+    Create a new <GradientText animated>Script</GradientText> in <GradientText animated>ServerScriptService</GradientText>. Name it anything.
+  </div>
+  <div>
+    Go inside the script and add the code below:
+    ```lua
+    local apikey = "YOUR_API_KEY" -- Replace with your actual API KEY
+    local workspaceid = "YOUR_WORKSPACE_ID" -- Replace with your workspace id.
+    local exporterlocation = game.ServerScriptService:WaitForChild("OrderLogModule") -- Replace this with your exporter's location.
+    local orderLog = require(exporterlocation)
+    orderLog.setupAPI(apikey, workspaceid)
+    ```
+  </div>
+  <div>
+    Make sure you have changed everything where it says to change it.
+  </div>
+  <div>
+    Create a <GradientText animated>ModuleScript</GradientText> in your Addons folder in your CafePOS instance. You can name it Order Logging or anything else you want it to be.
+    <ul>
+      <li>If you do not have an Addons folder, create one in the CafePOS instance.</li>
+    </ul>
+  </div>
+  <div>
+    Paste the code below into it. You are recommended not to modify it.
+    ```lua
+    local Module = require(121652996197382)
+    local API = Module.API
+
+
+    local AddonId = 5378 -- This is required for interacting with the API
+    local Menu = nil
+    local OrderModule = require(game.ServerScriptService:WaitForChild("OrderLogModule"))
+    local orders = {
+
+    }
+
+
+    local Menu = API:Invoke("GetMenu", { ID=AddonId })
+
+    local function GetItem(ID)
+      for _, Category in pairs(Menu) do
+        if Category and Category.Items then -- Check if Category and its Items exist
+          for _, Item in pairs(Category.Items) do
+            if Item and Item.ID == ID then -- Check if Item and its ID exist
+              return Item
+            end
+          end
+        end
+      end
+      return nil
+    end
+
+    return {
+
+      Name = "Order Logging",
+
+      -- Triggers when the order handler is ready.
+      Initialise = function(ID)
+        AddonId = ID
+        Menu = API:Invoke("GetMenu", { ID=AddonId })
+      end,
+
+      -- Triggers when a new order is placed.
+      OrderCreated = function(Order)
+        local items = {}
+        local itemsToProcess = Order.Items
+        for _, itemData in pairs(itemsToProcess) do
+          local itemId = itemData.ID
+
+          local fullItemDetails = GetItem(itemId)
+
+          if fullItemDetails then
+            table.insert(items, fullItemDetails.Name)
+          else
+            warn("Item with ID:", itemId, "not found in the menu.")
+          end
+        end
+        game.ReplicatedStorage.test:Fire(Order)
+        local order = OrderModule.createOrder(Order.Player, Order.Player, {
+          items = items,
+          status = "waiting_for_preparation",
+        })
+        local player = Order.Player
+        orders[player] = order.id
+        items = {}
+
+      end,
+
+      -- Triggers when an order is removed by an admin (NOT COMPLETED).
+      OrderRemoved = function(Order)
+        OrderModule.setCancelled(orders[Order.Player])
+        orders[Order.Player] = nil
+      end,
+
+      -- Triggers when an order is claimed.
+      OrderClaimed = function(Order, Player)
+        OrderModule.setPreparing(orders[Order.Player], Player) -- Or spoof a player object (see docs - Creating an Order, Using User Object)
+      end,
+
+      -- Triggers when an order is unclaimed by an admin.
+      OrderUnclaimed = function(Order, Player)
+        OrderModule.setReprepare(orders[Order.Player])
+      end,
+
+      -- Triggers when an order is completed.
+      OrderCompleted = function(Order, Player)
+        OrderModule.setComplete(orders[Order.Player])
+        orders[Order.Player] = nil
+      end,
+
+      -- Triggers whenever an order is created or updated. All orders are returned.
+      OrdersUpdated = function(Orders)
+
+      end,
+    }
+    ```
+  </div>
+  <div>
+    Ensure that is all saved. HTTP requests MUST be on.
+  </div>
+</NumberedList>
+
+Enjoy your Order Logging system! If you need any help, my DMs are always open. If they are not, email me at [slugmoon@slugmoon.com](mailto:slugmoon@slugmoon.com)
+
+## Limitations
+
+- You can't see who placed the order, due to lacking CafePOS APIs.
+- If they ordered more than one of the same items, it may only show as one. Might work.
+
+## Creating an Exporter
+
+Use the site below to create an Exporter for your CafePOS instance. This is required to use the Order Logging module.
+:::warning
+The site below is not an actual site, do not try to visit it. We are using it as a placeholder for the Exporter creation.
+We are not responsible for any issues that may occur if you try to visit it.
+:::
+
+<BrowserWindow url="https://docs.hyra.io/api-reference/players/module/creating-an-exporter/devs/raw">
+# <Typewriter text="Exporter Creation" loop delay={100} eraseDelay={40} />
+
+<NumberedList>
+  <div>
+    Navigate to your ServerScriptService.
+  </div>
+  <div>
+    Create a Module Script named OrderLogModule
+  </div>
+  <div>
+    Use this code snippet in your new module script
+    ```lua
+    local orderLog = require(15254660066)
+    return orderLog
+    ```
+  </div>
+</NumberedList>
+</BrowserWindow>

@@ -25,7 +25,7 @@ export default function IframeWindow({url}: {url: string}): ReactNode {
         <iframe
           src={url}
           title={url}
-          style={{display: 'block', width: '100%', height: 300}}
+          style={{display: 'block', width: '100%', height: '1000px'}}
         />
       </BrowserWindow>
     </div>

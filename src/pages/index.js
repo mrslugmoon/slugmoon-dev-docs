@@ -18,12 +18,12 @@ function HomepageHeader() {
         <Heading as="h1" className="hero__title">
           <GradientText animated>{siteConfig.title}</GradientText>
         </Heading>
-        <p className="hero__subtitle">Innovation starts <Typewriter text="here" loop delay={100} eraseDelay={40} />.</p>
+        <p className="hero__subtitle"><Typewriter text="Innovation starts here." loop delay={100} eraseDelay={40} /></p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="https://slugmoon.com">
-            Visit my bio
+            to="/intro">
+            Jump into the Slugmoon Docs
           </Link>
         </div>
       </div>

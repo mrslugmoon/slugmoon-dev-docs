@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Intro
 
-Welcome to Slugmoon Suite Docs! Here you can learn about all our services and how to use them.
+Welcome to Slugmoon Developer Docs! Here you can learn about all our services and how to use them.
 
 :::warning
 

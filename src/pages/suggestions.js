@@ -4,6 +4,8 @@ import styles from './suggestions.module.css'; // Import your custom CSS module
 import GradientText from '@site/src/components/GradientText';
 import BrowserWindow from '@site/src/components/BrowserWindow';
 import Typewriter from '@site/src/components/Typewriter';
+import NumberedList from '@site/src/components/NumberedList';
+import Icon from '@site/src/components/Icon'; // Ensure this import is correct
 
 function Suggestions() {
   const [name, setName] = useState('');
@@ -30,7 +32,7 @@ function Suggestions() {
     const payload = {
       // You can customize the username and avatar here
       // username: "Documentation Suggester",
-       avatar_url: "/img/icon.png",
+      // avatar_url: "/img/icon.png",
       embeds: [
         {
           title: "New Documentation Suggestion",
@@ -67,7 +69,12 @@ function Suggestions() {
       });
 
       if (response.ok) {
-        setFormStatus('Thank you for your suggestion! It has been sent to Discord.');
+        // CORRECTED LINE: Using a template literal to combine string and JSX
+        setFormStatus(
+          <>
+            Thank you for your suggestion! It has been sent to <Icon name="discord" />.
+          </>
+        );
         setName('');
         setEmail('');
         setSuggestion('');
@@ -85,13 +92,17 @@ function Suggestions() {
   };
 
   return (
- 
     <Layout
       title="Suggestions" // Page title in browser tab
       description="Submit your suggestions for improving the documentation." // Meta description
     >
       <main className={styles.suggestionsPage}>
-        <h1>{/*<GradientText animated>*/}<Typewriter text="Documentation Suggestions" loop delay={100} eraseDelay={40} />{/*</GradientText></h1> */}</h1>
+        <h1>
+          {/* Use GradientText as a wrapper if you want the Typewriter text to be gradient */}
+          {/* <GradientText animated> */}
+          <Typewriter text="Documentation Suggestions" loop delay={100} eraseDelay={40} />
+          {/* </GradientText> */}
+        </h1>
         <p>We value your feedback! Please let us know what you think needs improving in our documentation.</p>
 
         <form onSubmit={handleSubmit} className={styles.suggestionForm}>
@@ -132,15 +143,15 @@ function Suggestions() {
           </div>
 
           <button type="submit" className={styles.submitButton}>
-            Submit Suggestion
+           <Icon name="discord" color="blue" /> Submit Suggestion
           </button>
 
+          {/* Form status message can directly render JSX */}
           {formStatus && <p className={styles.formStatus}>{formStatus}</p>}
         </form>
       </main>
     </Layout>
   );
-
 }
 
 export default Suggestions;

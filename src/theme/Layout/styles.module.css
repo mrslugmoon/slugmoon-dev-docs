@@ -1,0 +1,17 @@
+/* src/theme/Layout/styles.module.css */
+
+.backgroundPattern {
+  position: fixed;
+  inset: 0;
+  opacity: 0.15; /* Increased opacity from 0.05 to 0.15 for a darker effect */
+  z-index: -1;
+  overflow: hidden;
+}
+
+.backgroundCircles {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}

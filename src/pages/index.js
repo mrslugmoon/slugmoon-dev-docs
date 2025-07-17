@@ -6,6 +6,8 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Typewriter from '@site/src/components/Typewriter';
 import GradientText from '@site/src/components/GradientText';
 import BrowserWindow from '@site/src/components/BrowserWindow';
+import Icon from '@site/src/components/Icon';
+import IframeWindow from '@site/src/components/IframeWindow';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -16,7 +18,7 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          <GradientText animated>{siteConfig.title}</GradientText>
+          Slugmoon
         </Heading>
         <p className="hero__subtitle"><Typewriter text="Innovation starts here." loop delay={100} eraseDelay={40} /></p>
         <div className={styles.buttons}>
@@ -41,15 +43,6 @@ export default function Home() {
       <main>
         <HomepageFeatures />
       </main>
-      <BrowserWindow url="https://slugmoon.com" className={styles.browserWindow}>
-       <iframe
-          src="https://slugmoon.com"
-          title="Slugmoon Bio"
-          className={styles.browserFrame}
-          sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-          style={{width: '100%', height: '1100px', border: 'none'}}
-        ></iframe>
-      </BrowserWindow>
     </Layout>
   );
 }

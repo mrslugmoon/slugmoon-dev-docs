@@ -7,44 +7,198 @@
  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', 'Montserrat';
+
+ background-color: var(--roblox-dark); /* Base color for the entire page */
+  color: white; /* Default text color for the body */
+  min-height: 100vh; /* Ensure body covers full viewport height */
+  display: flex; /* Helps ensure layout takes full height */
+  flex-direction: column;
+
+  /* REMOVE any `background-image` or `background-attachment: fixed` from body here.
+   * The radial gradient pattern will be handled by the LayoutWrapper div.
+   */
+  background-image: none; /* Explicitly remove any default background image */
+  background-attachment: scroll; /* Ensure it's not fixed here */
+  background-size: auto;
+  background-position: initial;
+  background-repeat: initial;
 }
 
 /* Optionally, apply to specific elements if you want to override Docusaurus defaults */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', 'Montserrat';
+   color: var(--ifm-heading-color); /* Ensure headings use the defined color */
 }
 
 /* Example: If Docusaurus's default code blocks don't get it, you might target them specifically */
 code, pre {
-  font-family: 'Montserrat', monospace; /* Keep monospace for code, but if you want Montserrat, you can use it */
+  font-family: 'Montserrat', 'Montserrat'; /* Keep monospace for code, but if you want Montserrat, you can use it */
 }
 
 
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #f0c03f;
-  --ifm-color-primary-dark: #f0c03f;
-  --ifm-color-primary-darker: #f0c03f;
-  --ifm-color-primary-darkest: #f0c03f;
-  --ifm-color-primary-light: #f0c03f;
-  --ifm-color-primary-lighter: #f0c03f;
-  --ifm-color-primary-lightest: #f0c03f;
+  /* Default (light theme) variables from your provided index.css - keep for Docusaurus defaults */
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+
+  /* Your Roblox-inspired colors (These are the primary colors for your dark theme) */
+  --roblox-blue: hsl(199, 100%, 50%);
+  --roblox-dark: hsl(0, 0%, 10%);
+  --roblox-card: hsl(0, 0%, 18%);
+  --roblox-orange: hsl(13, 100%, 60%);
+  --roblox-success: hsl(145, 100%, 41%);
+  --roblox-error: hsl(355, 100%, 64%);
+  --roblox-gray-400: hsl(0, 0%, 67%);
+  --roblox-gray-500: hsl(0, 0%, 50%);
+  --roblox-gray-600: hsl(0, 0%, 38%);
+  --roblox-gray-700: hsl(0, 0%, 27%);
+  --roblox-gray-800: hsl(0, 0%, 20%);
+
+  /* Docusaurus theme variables (map to your Roblox colors for dark theme consistency) */
+  --ifm-background-color: var(--roblox-dark); /* General page background */
+  --ifm-code-background-color: var(--roblox-gray-800); /* Code block background */
+  --ifm-code-color: var(--roblox-gray-400); /* Code text color */
+  --ifm-navbar-background-color: var(--roblox-dark); /* Navbar background */
+  --ifm-sidebar-background-color: var(--roblox-dark); /* Left sidebar background */
+  --ifm-text-color: var(--roblox-gray-400); /* General body text color */
+  --ifm-heading-color: #fff; /* Headings color */
+  --ifm-link-color: var(--roblox-blue); /* Default link color */
+  --ifm-link-hover-color: var(--roblox-orange); /* Link hover color */
+  --ifm-footer-background-color: var(--roblox-dark); /* Footer background */
+  --ifm-color-primary: var(--roblox-blue); /* Docusaurus primary color */
+  --ifm-color-secondary: var(--roblox-orange); /* Docusaurus secondary color */
+  --ifm-color-info: var(--roblox-blue); /* Info admonition border/icon */
+  --ifm-color-success: var(--roblox-success); /* Success admonition */
+  --ifm-color-warning: var(--roblox-orange); /* Warning admonition */
+  --ifm-color-danger: var(--roblox-error); /* Danger admonition */
+  --ifm-card-background-color: var(--roblox-card); /* Background for cards/admonitions */
+
+  /* Standard Docusaurus/Infima values you had */
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-border-radius: 0.5rem; /* Common border radius */
+  --ifm-spacing-s: 0.5rem;
+  --ifm-spacing-md: 1rem;
+  --ifm-spacing-lg: 1.5rem;
+  --ifm-spacing-xl: 2rem;
+  --ifm-shadow-low: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* Example shadow */
+  --ifm-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+   --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-border-radius: 0.5rem; /* Common border radius */
+  --ifm-spacing-s: 0.5rem;
+  --ifm-spacing-md: 1rem;
+  --ifm-spacing-lg: 1.5rem;
+  --ifm-spacing-xl: 2rem;
+  --ifm-shadow-low: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* Example shadow */
+  --ifm-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #f0c03f;
-  --ifm-color-primary-dark: #f0c03f;
-  --ifm-color-primary-darker: #f0c03f;
-  --ifm-color-primary-darkest: #f0c03f;
-  --ifm-color-primary-light: #f0c03f;
-  --ifm-color-primary-lighter: #f0c03f;
-  --ifm-color-primary-lightest: #f0c03f;
+ --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(41, 70%, 52%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+
+  /* Re-map Docusaurus dark mode variables to your Roblox dark theme */
+  --ifm-background-color: var(--roblox-dark);
+  --ifm-code-background-color: var(--roblox-gray-800);
+  --ifm-code-color: var(--roblox-gray-400);
+  --ifm-navbar-background-color: var(--roblox-dark);
+  --ifm-sidebar-background-color: var(--roblox-dark);
+  --ifm-text-color: var(--roblox-gray-400);
+  --ifm-heading-color: #2df3d2;
+  --ifm-link-color: var(--roblox-blue);
+  --ifm-link-hover-color: var(--roblox-orange);
+  --ifm-footer-background-color: var(--roblox-dark);
+  --ifm-card-background-color: var(--roblox-card);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.main-wrapper {
+  background-color: var(--ifm-background-color); /* Use Docusaurus variable for consistency */
+  position: relative;
+  z-index: 0;
+  padding-top: var(--ifm-spacing-xl); /* Spacing from navbar */
+  padding-bottom: var(--ifm-spacing-xl); /* Spacing to footer */
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--ifm-navbar-background-color);
+  border-bottom: 1px solid var(--roblox-gray-700); /* Subtle border */
+}
+.navbar__item, .navbar__link {
+  color: var(--roblox-gray-400);
+}
+.navbar__link:hover {
+  color: var(--roblox-blue);
+}
+
+.gradient-red-button {
+  background: linear-gradient(135deg, var(--roblox-error), hsl(355, 100%, 75%), var(--roblox-error));
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+  border: none;
+  color: white;
+}
+
+/* Sidebar */
+.theme-doc-sidebar-container {
+  background-color: var(--ifm-sidebar-background-color);
+  border-right: 1px solid var(--roblox-gray-700); /* Subtle separator */
+}
+.theme-doc-sidebar-item-link, .menu__link {
+  color: var(--roblox-gray-400);
+}
+.theme-doc-sidebar-item-link.menu__link--active, .menu__link--active {
+  color: var(--roblox-blue);
+  background-color: var(--roblox-gray-800); /* Highlight active item */
+}
+.menu__list-item-collapsible-header {
+  color: var(--roblox-gray-400);
+}
+.menu__link--sublist-caret:before {
+    background: var(--roblox-gray-500); /* Adjust caret color */
 }
 
 /* --- Corrected CSS for emoji-like images below --- */
@@ -246,49 +400,11 @@ code, pre {
 }
 
 .main-wrapper h1:first-of-type, /* Target the first h1 on the main content area */
-.hero__title { /* Also target hero titles if you want them gradient */
-  /* Remove default Docusaurus text color */
-  color: var(--ifm-font-color-base); /* This will be overridden by transparent below */
-
-  /* Apply the gradient */
-  background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #f97316, #06b6d4, #3b82f6);
-  background-size: 400% 100%; /* Make the background larger than the element */
-  background-clip: text; /* Clip the background to the text shape */
-  -webkit-background-clip: text; /* For Safari/old Chrome */
-  color: transparent; /* Make text transparent so background shows through */
-  animation: gradient-animation 3s ease infinite; /* Animation property */
-  display: block; /* Ensure it takes full width for text-align */
-
-  /* Optional: Adjust font size/weight if needed for impact */
-  font-size: 3rem; /* Adjust as needed */
-  font-weight: 800; /* Extra bold */
- /* text-align: left; /* Left-align the title */
-  margin-top: 2rem; /* Space above the title */
-  margin-bottom: 2rem; /* Space below the title */
-}
 
 /* Keyframes for the gradient animation */
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 /* Optional: Adjust for smaller screens */
-@media (max-width: 768px) {
-  .main-wrapper h1:first-of-type,
-  .hero__title {
-    font-size: 2.25rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-}
+
 
 /* Ensure Admonition titles are not affected by this if they are h1s */
 .theme-admonition h1,
@@ -302,4 +418,179 @@ code, pre {
   background-clip: unset;
   color: unset; /* Revert to default text color */
   animation: none; /* Remove animation */
+}
+
+
+
+/* --- Sidebar Styling Enhancements --- */
+
+/* Main sidebar container */
+.theme-doc-sidebar-container {
+  background-color: var(--roblox-dark);
+  border-right: 1px solid var(--roblox-gray-700);
+  /* REVISED: Reduce top padding to minimize gap at the very top */
+  padding-top: var(--ifm-spacing-sm); /* Using --ifm-spacing-sm (0.5rem) or even less */
+  padding-bottom: var(--ifm-spacing-md); /* Keep bottom padding consistent */
+  box-shadow: var(--ifm-shadow-md);
+  border-radius: var(--ifm-border-radius);
+  overflow: hidden;
+}
+
+/* Base style for all sidebar links and items */
+.theme-doc-sidebar-item-link,
+.menu__link {
+  color: var(--roblox-gray-400);
+  padding: 0.35rem var(--ifm-spacing-md); /* FURTHER REDUCED vertical padding for tighter items */
+  border-radius: var(--ifm-border-radius);
+  margin: 0.025rem var(--ifm-spacing-s); /* NEARLY ZERO vertical margin between items */
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Hover state for sidebar links */
+.theme-doc-sidebar-item-link:hover,
+.menu__link:hover {
+  background-color: var(--roblox-gray-800);
+  color: var(--roblox-blue);
+}
+
+/* Active/selected state for sidebar links */
+.theme-doc-sidebar-item-link.menu__link--active,
+.menu__link--active {
+  background-color: var(--roblox-gray-800);
+  color: var(--roblox-blue);
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--roblox-blue);
+}
+
+/* Styling for sidebar category headers (e.g., "Creations & Modules") */
+.menu__list-item--collapsible > .menu__link {
+  font-weight: 600;
+  color: #fff;
+  /* REVISED: Reduce bottom margin to bring sub-items closer to the category title */
+  margin-bottom: 0rem; /* Remove margin entirely, or set to a very small value like 0.05rem */
+  margin-top: 0.5rem; /* Add a small top margin to separate from previous section */
+  padding-left: var(--ifm-spacing-md);
+}
+.menu__list-item--collapsible > .menu__link:hover {
+    background-color: transparent;
+    color: #fff;
+}
+
+/* Indentation for sub-items */
+.menu__list-item-collapsible .menu__list {
+  /* This controls the left-indentation of child items. Keep it for hierarchy. */
+  padding-left: var(--ifm-spacing-lg);
+  /* REVISED: Reduce top padding if the default Docusaurus list has it, to close gap */
+  padding-top: 0;
+}
+
+/* Caret/arrow icon for collapsible items */
+.menu__link--sublist-caret {
+  margin-left: auto;
+}
+.menu__link--sublist-caret:before {
+  background: var(--roblox-gray-500);
+  width: 0.6em;
+  height: 0.6em;
+  transition: transform 0.2s ease-in-out;
+}
+.menu__link--sublist-caret[aria-expanded="true"]:before {
+  transform: rotate(90deg);
+}
+
+/* Active state for parent categories when a child is active */
+.menu__list-item-collapsible--active > .menu__link {
+  color: var(--roblox-blue);
+  font-weight: 600;
+}
+
+/* Scrollbar Styling (Webkit - Chrome, Safari) */
+.theme-doc-sidebar-container::-webkit-scrollbar {
+  width: 8px;
+}
+.theme-doc-sidebar-container::-webkit-scrollbar-track {
+  background: var(--roblox-dark);
+}
+.theme-doc-sidebar-container::-webkit-scrollbar-thumb {
+  background: var(--roblox-gray-700);
+  border-radius: 4px;
+}
+.theme-doc-sidebar-container::-webkit-scrollbar-thumb:hover {
+  background: var(--roblox-gray-600);
+}
+
+/* --- Ensure Text Alignment in Sidebar --- */
+.menu__list-item-link,
+.menu__link {
+  text-align: left;
+}
+
+/* src/css/custom.css */
+
+/* ... your existing styles ... */
+
+/* Animated Gradient Stroke for Search Docs Button */
+.DocSearch-Button {
+  position: relative; /* Essential for positioning the pseudo-element */
+  z-index: 1; /* Ensure the button content is above the pseudo-element stroke */
+  /* REMOVED: background-color and border from here, handled by pseudo-element's mask */
+  background: transparent; /* Ensure no background on the button itself */
+  border: none; /* Ensure no border on the button itself */
+
+  border-radius: var(--ifm-border-radius); /* Inherit existing border-radius */
+  overflow: hidden; /* Crucial to contain the pseudo-element for the mask effect */
+  padding: 0.5rem 0.75rem; /* Adjust padding as needed for the button content */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between icon and text */
+  /* Remove any default box-shadow from Docusaurus if it conflicts */
+  box-shadow: none;
+}
+
+.DocSearch-Button:hover {
+  border-color: transparent; /* Keep this to ensure no border appears on hover */
+}
+
+/* Pseudo-element for the animated gradient border */
+.DocSearch-Button::before {
+  content: '';
+  position: absolute;
+  inset: -2px; /* Control the thickness of the border. -2px for 2px stroke outside */
+  border-radius: inherit; /* Inherit the border-radius from the parent */
+  background: linear-gradient(135deg, var(--roblox-blue), var(--roblox-orange), var(--roblox-blue));
+  background-size: 300% 300%; /* Make the gradient larger to allow for animation */
+  animation: gradient-border 4s ease infinite; /* Re-use your existing gradient-border animation */
+  z-index: -1; /* Place it behind the button's content */
+
+  /* Mask to create the stroke effect */
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor; /* Create a hole in the mask */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; /* For Webkit browsers */
+}
+
+/* Ensure the text and icon inside the button are visible */
+.DocSearch-Button .DocSearch-Search-Icon,
+.DocSearch-Button .DocSearch-Button-Placeholder {
+  color: var(--roblox-gray-400); /* Default color for search icon/text */
+}
+
+.DocSearch-Button:hover .DocSearch-Search-Icon,
+.DocSearch-Button:hover .DocSearch-Button-Placeholder {
+  color: #fff; /* Make them white on hover for better contrast with the gradient */
+}
+
+/* Ensure the @keyframes gradient-border is defined in your custom.css */
+@keyframes gradient-border {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }

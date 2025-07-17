@@ -93,6 +93,11 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
+      colorMode: {
+      defaultMode: 'dark', // Set the default theme to dark
+      disableSwitch: true, // Hide the dark/light mode switch
+      respectPrefersColorScheme: false, // Optional: Ignore OS light/dark preference
+    },
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
         title: 'Slugmoon Developer Docs',

@@ -16,15 +16,13 @@ import Icon from '@site/src/components/Icon';
 
 ## Steps
 
-<NumberedList>
-  <div>
-    Create an Exporter; you can use the section below to help you. Return back to this page afterwards.
-  </div>
-  <div>
-    Create a new :file: <GradientText animated>Script</GradientText> in :cloud: <GradientText animated>ServerScriptService</GradientText>. Name it anything.
-  </div>
-  <div>
-    Go inside the script and add the code below:
+
+  
+   1. Create an Exporter; you can use the section below to help you. Return back to this page afterwards.
+  
+  2.  Create a new :file: <GradientText animated>Script</GradientText> in :cloud: <GradientText animated>ServerScriptService</GradientText>. Name it anything.
+  
+ 3.   Go inside the script and add the code below:
     ```lua
     local apikey = "YOUR_API_KEY" -- Replace with your actual API KEY
     local workspaceid = "YOUR_WORKSPACE_ID" -- Replace with your workspace id.
@@ -32,18 +30,16 @@ import Icon from '@site/src/components/Icon';
     local orderLog = require(exporterlocation)
     orderLog.setupAPI(apikey, workspaceid)
     ```
-  </div>
-  <div>
-    Make sure you have changed everything where it says to change it.
-  </div>
-  <div>
-    Create a :file: <GradientText animated>ModuleScript</GradientText> in your Addons folder in your CafePOS instance. You can name it Order Logging or anything else you want it to be.
-    <ul>
-      <li>If you do not have an Addons folder, create one in the CafePOS instance.</li>
-    </ul>
-  </div>
-  <div>
-    Paste the code below into it. You are recommended not to modify it.
+  
+   3. Make sure you have changed everything where it says to change it.
+  
+  4.  Create a :file: <GradientText animated>ModuleScript</GradientText> in your Addons folder in your CafePOS instance. You can name it Order Logging or anything else you want it to be.
+    
+      If you do not have an Addons folder, create one in the CafePOS instance.
+    
+  
+ 
+ 5.   Paste the code below into it. You are recommended not to modify it.
     ```lua
     local Module = require(121652996197382)
     local API = Module.API
@@ -136,11 +132,10 @@ import Icon from '@site/src/components/Icon';
       end,
     }
     ```
-  </div>
-  <div>
-    Ensure that is all saved. HTTP requests MUST be on.
-  </div>
-</NumberedList>
+ 
+  
+  6.  Ensure that is all saved. HTTP requests MUST be on.
+  
 
 Enjoy your Order Logging system! If you need any help, my DMs are always open. If they are not, email me at [slugmoon@slugmoon.com](mailto:slugmoon@slugmoon.com)
 
@@ -160,19 +155,19 @@ We are not responsible for any issues that may occur if you try to visit it.
 <BrowserWindow url="https://docs.hyra.io/api-reference/players/module/creating-an-exporter/devs/raw">
 # <Typewriter text="Exporter Creation" loop delay={100} eraseDelay={40} />
 
-<NumberedList>
-  <div>
-    Navigate to your ServerScriptService.
-  </div>
-  <div>
-    Create a :paper: Module Script named OrderLogModule
-  </div>
-  <div>
-    Use this :file: code snippet in your new module script
+
+  
+  1.  Navigate to your ServerScriptService.
+  
+  
+  2.  Create a :paper: Module Script named OrderLogModule
+  
+ 
+ 3.   Use this :file: code snippet in your new module script:
     ```lua
     local orderLog = require(15254660066)
     return orderLog
     ```
-  </div>
-</NumberedList>
+ 
+
 </BrowserWindow>

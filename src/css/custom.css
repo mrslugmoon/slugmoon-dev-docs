@@ -262,7 +262,7 @@ code, pre {
   /* Optional: Adjust font size/weight if needed for impact */
   font-size: 3rem; /* Adjust as needed */
   font-weight: 800; /* Extra bold */
-  text-align: left; /* Left-align the title */
+ /* text-align: left; /* Left-align the title */
   margin-top: 2rem; /* Space above the title */
   margin-bottom: 2rem; /* Space below the title */
 }

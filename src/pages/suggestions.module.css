@@ -1,66 +1,79 @@
-/* src/pages/suggestions.module.css */
+/* src/pages/suggestions/styles.module.css (or suggestions.module.css) */
 
-.suggestionsPage {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: var(--ifm-background-color);
-  border-radius: var(--ifm-border-radius);
-  box-shadow: var(--ifm-global-shadow-md);
+/* General container for the form or input groups */
+.formContainer {
+  background-color: #1a1a1a; /* Dark background similar to the image */
+  border-radius: 0.5rem; /* Rounded corners */
+  padding: 1.5rem; /* Padding inside the container */
+  margin-bottom: 1.5rem; /* Space below the container */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
-.suggestionForm {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+/* Style for labels */
+.formLabel {
+  display: block; /* Ensures label is on its own line */
+  margin-bottom: 0.5rem; /* Space between label and input */
+  color: #e0e7ff; /* Light text color */
+  font-size: 0.9rem; /* Slightly smaller font for labels */
+  font-weight: 500; /* Medium weight */
 }
 
-.formGroup {
-  display: flex;
-  flex-direction: column;
+/* Container for individual input fields, especially if they have icons */
+.inputWrapper {
+  position: relative; /* Needed for absolute positioning of icons */
+  margin-bottom: 1rem; /* Space between input fields */
 }
 
-.formGroup label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: var(--ifm-font-color-base);
-}
-
-.inputField,
-.textareaField {
-  padding: 10px;
-  border: 1px solid var(--ifm-color-emphasis-400);
-  border-radius: var(--ifm-border-radius);
+/* Style for the input fields (text, number, textarea) */
+.formInput {
+  width: 100%;
+  padding: 0.75rem 1rem; /* Padding inside input field */
+  padding-right: 2.5rem; /* Space for the icon on the right */
+  background-color: #2a2a2a; /* Slightly lighter dark background for the input */
+  border: 1px solid #3a3a3a; /* Subtle border */
+  border-radius: 0.375rem; /* Rounded corners for input */
+  color: #e0e7ff; /* Light text color for input content */
   font-size: 1rem;
-  color: var(--ifm-font-color-base);
-  background-color: var(--ifm-color-emphasis-100);
+  line-height: 1.5;
+  outline: none; /* Remove default outline */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Smooth transition for focus */
 }
 
-.textareaField {
-  resize: vertical; /* Allow vertical resizing */
+.formInput:focus {
+  border-color: #6366f1; /* Tailwind blue-500 equivalent on focus */
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3); /* Subtle glow on focus */
 }
 
-.submitButton {
-  padding: 12px 20px;
-  background-color: var(--ifm-color-primary);
-  color: var(--ifm-font-color-inverse);
-  border: none;
-  border-radius: var(--ifm-border-radius);
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: background-color 0.2s ease-in-out;
+/* Placeholder text style */
+.formInput::placeholder {
+  color: #a0a0a0; /* Lighter grey for placeholder */
+  opacity: 1; /* Ensure placeholder is visible */
 }
 
-.submitButton:hover {
-  background-color: var(--ifm-color-primary-dark);
+/* Style for icons inside input fields (e.g., the gamepad icon) */
+.inputIcon {
+  position: absolute;
+  right: 1rem; /* Position from the right */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%);
+  color: #888; /* Grey color for the icon */
+  pointer-events: none; /* Make sure icon doesn't block input clicks */
+  width: 1rem; /* Size of the icon */
+  height: 1rem;
 }
 
-.formStatus {
-  margin-top: 15px;
-  padding: 10px;
-  text-align: center;
-  border-radius: var(--ifm-border-radius);
-  background-color: var(--ifm-color-info); /* Example color */
-  color: var(--ifm-font-color-inverse);
+/* Special styling for textareas */
+.formTextarea {
+  min-height: 8rem; /* Minimum height for textarea */
+  resize: vertical; /* Allow vertical resizing only */
+}
+
+/* Styling for the submit button (your RobloxButton component will handle this) */
+.submitButtonContainer {
+    margin-top: 1.5rem; /* Space above the button */
+}
+
+/* Override Docusaurus Markdown headings if they appear in form context */
+.formContainer h2, .formContainer h3 {
+    color: #e0e7ff; /* Ensure headings inside the form match text color */
 }

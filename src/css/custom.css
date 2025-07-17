@@ -21,6 +21,7 @@ code, pre {
 }
 
 
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #f0c03f;
@@ -69,4 +70,236 @@ code, pre {
   width: auto;
   vertical-align: middle;
   margin: 0 0.15em;
+}
+
+.bg-roblox-dark {
+  background-color: var(--roblox-dark);
+}
+
+.bg-roblox-card {
+  background-color: var(--roblox-card);
+}
+
+.bg-roblox-blue {
+  background-color: var(--roblox-blue);
+}
+
+.bg-roblox-orange {
+  background-color: var(--roblox-orange);
+}
+
+.text-roblox-blue {
+  color: var(--roblox-blue);
+}
+
+.text-roblox-orange {
+  color: var(--roblox-orange);
+}
+
+.text-roblox-error {
+  color: var(--roblox-error);
+}
+
+.text-roblox-success {
+  color: var(--roblox-success);
+}
+
+.border-roblox-error {
+  border-color: var(--roblox-error);
+}
+
+.border-roblox-blue {
+  border-color: var(--roblox-blue);
+}
+
+.text-gray-400 {
+  color: var(--roblox-gray-400);
+}
+
+.text-gray-500 {
+  color: var(--roblox-gray-500);
+}
+
+.border-gray-600 {
+  border-color: var(--roblox-gray-600);
+}
+
+.border-gray-700 {
+  border-color: var(--roblox-gray-700);
+}
+
+.bg-gray-800 {
+  background-color: var(--roblox-gray-800);
+}
+
+.gradient-roblox {
+  background: linear-gradient(135deg, var(--roblox-blue), var(--roblox-orange));
+}
+
+.gradient-roblox-button {
+  /* background: linear-gradient(90deg, var(--roblox-blue), var(--roblox-orange)); */
+  background: linear-gradient(90deg, hsl(199, 85%, 45%), hsl(13, 95%, 55%));
+}
+
+.gradient-roblox-button:hover {
+  background: linear-gradient(90deg, hsl(199, 85%, 45%), hsl(13, 95%, 55%));
+}
+
+/* Animated gradient text */
+.gradient-text-animated {
+  background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #f97316, #06b6d4, #3b82f6);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-animation 3s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animated gradient container border */
+.gradient-container {
+  position: relative;
+  background: rgba(17, 24, 39, 0.95);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gradient-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #f97316, #06b6d4, #3b82f6);
+  background-size: 300% 300%;
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  animation: gradient-border 4s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradient-border {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Red gradient button for cancel actions */
+.gradient-red-button {
+  background: linear-gradient(135deg, #dc2626, #ef4444, #f87171);
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+  border: none;
+}
+
+.gradient-red-button:hover {
+  background: linear-gradient(135deg, #b91c1c, #dc2626, #ef4444);
+  animation-duration: 1.5s;
+}
+
+/* --- Base Admonition Styling Overrides --- */
+/* Target the main admonition container */
+.theme-admonition {
+  /* Common background for all admonition types */
+  background-color: #202232; /* A dark blue/gray for the background */
+  /* Common border for all admonition types */
+  border: 1px solid #1a3651; /* A slightly lighter blue/gray for the border */
+  border-radius: 0.5rem; /* Rounded corners */
+  padding: 1rem; /* Padding inside the box */
+  margin-top: 1.5rem; /* Margin above the box */
+  margin-bottom: 1.5rem; /* Margin below the box */
+  color: #e0e7ff; /* Light text color for all content */
+  font-size: 0.875rem; /* text-sm equivalent */
+  display: flex; /* For flex layout with icon and content */
+  align-items: flex-start; /* Align items to the top */
+  gap: 0.75rem; /* space-x-3 equivalent for gap */
+  box-shadow: none; /* Remove default Docusaurus shadow if any */
+}
+
+/* Hide the default Docusaurus icon/emoji (which is part of the header) */
+.theme-admonition-icon {
+  display: none;
+}
+
+/* Style for the title within the admonition */
+.theme-admonition-heading {
+  font-weight: 600; /* font-semibold equivalent */
+  margin-bottom: 0.25rem; /* mb-1 equivalent */
+  /* Color for all admonition titles - adjust as needed */
+  color: #93c5fd; /* A light blue for the title */
+}
+
+.main-wrapper h1:first-of-type, /* Target the first h1 on the main content area */
+.hero__title { /* Also target hero titles if you want them gradient */
+  /* Remove default Docusaurus text color */
+  color: var(--ifm-font-color-base); /* This will be overridden by transparent below */
+
+  /* Apply the gradient */
+  background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #f97316, #06b6d4, #3b82f6);
+  background-size: 400% 100%; /* Make the background larger than the element */
+  background-clip: text; /* Clip the background to the text shape */
+  -webkit-background-clip: text; /* For Safari/old Chrome */
+  color: transparent; /* Make text transparent so background shows through */
+  animation: gradient-animation 3s ease infinite; /* Animation property */
+  display: block; /* Ensure it takes full width for text-align */
+
+  /* Optional: Adjust font size/weight if needed for impact */
+  font-size: 3rem; /* Adjust as needed */
+  font-weight: 800; /* Extra bold */
+  text-align: left; /* Left-align the title */
+  margin-top: 2rem; /* Space above the title */
+  margin-bottom: 2rem; /* Space below the title */
+}
+
+/* Keyframes for the gradient animation */
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Optional: Adjust for smaller screens */
+@media (max-width: 768px) {
+  .main-wrapper h1:first-of-type,
+  .hero__title {
+    font-size: 2.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Ensure Admonition titles are not affected by this if they are h1s */
+.theme-admonition h1,
+.theme-admonition h2,
+.theme-admonition h3,
+.theme-admonition h4,
+.theme-admonition h5,
+.theme-admonition h6 {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: unset; /* Revert to default text color */
+  animation: none; /* Remove animation */
 }

@@ -1,54 +1,129 @@
-// src/components/Icon/index.js
+// src/components/Icon/index.js - NEW STRATEGY WITH @fortawesome/react-fontawesome
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the component
 
-// Import specific icons you plan to use
-// You can import all solid icons if you prefer, but it increases bundle size
-// import { fas } from '@fortawesome/free-solid-svg-icons'; // All solid icons
-// library.add(fas); // Add all solid icons to the library
+// --- IMPORTANT: DIRECTLY IMPORT EVERY SPECIFIC ICON YOU USE ---
+// These are the actual icon definition objects.
+// SOLID ICONS (fas)
+import {
+  faCheck,
+  faUser,
+  faFile, // For 'file' or 'paper'
+  faInfoCircle, // For 'info'
+  faTimes, // For 'cross'
+  faExclamationTriangle, // For 'warning'
+  faHome,
+  faCog,
+  faDownload,
+  faUpload,
+  faBook,
+  faEnvelope,
+  faArrowRight,
+  faGamepad
+} from '@fortawesome/free-solid-svg-icons';
 
-// Or import specific icons you know you'll use to keep bundle size small
-import { faCheck, faTimes, faInfoCircle, faExclamationTriangle, faHome, faUser } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faDiscord } from '@fortawesome/free-brands-svg-icons'; // Example brand icons
+// BRAND ICONS (fab)
+import {
+  faGithub,
+  faDiscord,
+  faTwitter,
+  faXTwitter,
+  faInstagram,
+  faFacebook,
+  faLinkedinIn, // Note: LinkedIn has '-in'
+  faYoutube,
+  faPatreon
+} from '@fortawesome/free-brands-svg-icons';
 
-// It's good practice to add them to the Font Awesome library once
-import { library } from '@fortawesome/fontawesome-svg-core';
-library.add(faCheck, faTimes, faInfoCircle, faExclamationTriangle, faHome, faUser, faGithub, faDiscord);
+// REGULAR ICONS (far) - Uncomment and add if you use specific outline icons
+// import { faStar, faBookmark } from '@fortawesome/free-regular-svg-icons';
+
+
+// --- Mapping from your markdown/input name to the exact Font Awesome kebab-case name string ---
+const inputNameToFaNameMap = {
+  'paper': 'file',
+  'cross': 'times',
+  'info': 'info-circle',
+  'warning': 'exclamation-triangle',
+  'linkedin': 'linkedin-in',
+  // Add other aliases you use in your markdown/props
+};
+
+// --- Mapping from Font Awesome kebab-case name string to the directly imported icon OBJECT ---
+const faNameToIconObjectMap = {
+  // Solid Icons
+  'check': faCheck,
+  'gamepad': faGamepad, // For 'Place ID' icon
+  'user': faUser,
+  'file': faFile,
+  'info-circle': faInfoCircle,
+  'times': faTimes,
+  'warning-fa': faExclamationTriangle,
+  'home': faHome,
+  'cog': faCog,
+  'download': faDownload,
+  'upload': faUpload,
+  'book': faBook,
+  'envelope': faEnvelope,
+  'arrow-right': faArrowRight,
+
+  // Brand Icons
+  'github': faGithub,
+  'discord': faDiscord,
+  'twitter': faTwitter,
+  'x-twitter': faXTwitter,
+  'instagram': faInstagram,
+  'facebook': faFacebook,
+  'linkedin-in': faLinkedinIn,
+  'youtube': faYoutube,
+  'patreon': faPatreon,
+
+  // Regular Icons (uncomment if using)
+  // 'star': faStar,
+  // 'bookmark': faBookmark
+};
 
 
 export default function Icon({ name, className, size, color }) {
-  // Font Awesome icon names typically start with 'fa' and then the icon name.
-  // We need to pass the actual icon object to the FontAwesomeIcon component.
-  // The 'icon' prop can accept an array [prefix, iconName] or the icon object itself.
-  // For simplicity, if you're importing specific icons, you can map them here.
+  let cleanedInputName = name.toLowerCase();
 
-  // A common approach is to use the 'icon' prop with a string if you added them to the global library
-  // or use an object like this:
-  const iconMap = {
-    check: faCheck,
-    cross: faTimes,
-    info: faInfoCircle,
-    warning: faExclamationTriangle,
-    home: faHome,
-    user: faUser,
-    github: faGithub,
-    discord: faDiscord,
-    // Add more mappings here as you add more imports
-  };
+  // Clean the input name (still useful if Markdown sends something unexpected)
+  cleanedInputName = cleanedInputName
+    .replace(/^fa-(solid|brands|regular)\s+/, '')
+    .replace(/^fa-/, '')
+    .trim();
 
-  const selectedIcon = iconMap[name.toLowerCase()]; // Convert name to lowercase for consistent lookup
+  // Get the exact Font Awesome name (e.g., 'info' -> 'info-circle')
+  const faIconName = inputNameToFaNameMap[cleanedInputName] || cleanedInputName;
 
-  if (!selectedIcon) {
-    console.warn(`Icon "${name}" not found. Please check the icon name or import it.`);
-    return null; // Or return a fallback icon
+  // Retrieve the directly imported icon *object*
+  const iconDefinition = faNameToIconObjectMap[faIconName];
+
+  if (!iconDefinition) {
+    console.warn(
+      `Icon definition for "${name}" (Cleaned: "${cleanedInputName}", FA name: "${faIconName}") not found in faNameToIconObjectMap. ` +
+      `Please ensure: 1. It's correctly imported from '@fortawesome/free-*-svg-icons'. ` +
+      `2. It's added to 'faNameToIconObjectMap' in src/components/Icon/index.js. ` +
+      `3. Your alias in 'inputNameToFaNameMap' is correct if applicable.`
+    );
+    // Render a fallback or an empty span if icon is not found
+    return <span className={className} style={{ color }}>[Icon: {name} (missing)]</span>;
   }
+
+  // Determine Font Awesome size prop (e.g., 'lg', '2x')
+  let faSize = '';
+  if (size === 'sm') faSize = 'sm';
+  else if (size === 'lg') faSize = 'lg';
+  else if (size === 'xl') faSize = 'xl';
+  else if (size === '2x') faSize = '2x';
+  // Add other sizes if you use them, e.g., '3x', '4x', etc.
 
   return (
     <FontAwesomeIcon
-      icon={selectedIcon}
+      icon={iconDefinition} // Pass the imported icon object here
       className={className}
-      size={size} // e.g., "lg", "2x", "3x"
-      color={color} // e.g., "blue", "#ff0000"
+      size={faSize} // Use the specific size prop
+      style={{ color: color, verticalAlign: 'middle', marginLeft: '0.2em', marginRight: '0.2em' }}
     />
   );
 }

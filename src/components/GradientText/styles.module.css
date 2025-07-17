@@ -1,48 +1,30 @@
 /* src/components/GradientText/styles.module.css */
 
-.gradientTextAnimated {
-  /* Define a wider background for animation */
-  background: linear-gradient(
-    to right,
-    #6a82fb,  /* Start Color 1 */
-    #fc5c7d,  /* Middle Color 2 */
-    #6a82fb,  /* Back to Color 1 for seamless loop */
-    #fc5c7d,  /* Back to Color 2 for seamless loop */
-    #6a82fb   /* Back to Color 1 for seamless loop */
-  );
-  background-size: 200% auto; /* Make the background twice as wide */
-
-  /* Clip the background to the text shape */
-  -webkit-background-clip: text; /* Vendor-prefixed for WebKit browsers */
-  background-clip: text;       /* Standard property for future compatibility and Firefox */
-
-  -webkit-text-fill-color: transparent; /* Vendor-prefixed for text transparency */
-  color: transparent;                   /* Standard property for text transparency (less crucial but good practice) */
-
-  display: inline-block; /* Essential for correct clipping behavior */
-
-  /* Apply the animation */
-  animation: gradientAnimation 3s linear infinite; /* Name, duration, timing, repetition */
+.gradientText {
+  /* This is the base styling for your GradientText component */
+  font-weight: bold; /* Example: make the text bold */
+  display: inline-block; /* Essential for background-clip: text to work */
+  white-space: nowrap; /* Prevent text from wrapping if it's a single phrase */
 }
 
-/* Define the animation keyframes */
-@keyframes gradientAnimation {
+.gradient-text-animated {
+  background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #f97316, #06b6d4, #3b82f6);
+  background-size: 400% 400%; /* Important for the animation to have room to move */
+  background-clip: text;
+  -webkit-background-clip: text; /* For Webkit browsers (Chrome, Safari) */
+  -webkit-text-fill-color: transparent; /* Makes the text transparent so background shows through */
+  animation: gradient-animation 3s ease infinite; /* Apply the animation */
+}
+
+/* Define the keyframes for the gradient animation */
+@keyframes gradient-animation {
   0% {
-    background-position: 0% center; /* Start of the background animation */
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    background-position: 100% center; /* End of the background animation */
+    background-position: 0% 50%;
   }
 }
-
-/* You can define other non-animated gradient styles here if you want */
-/*
-.gradientPurpleRed {
-  background: linear-gradient(to right, #6A82FB, #FC5C7D);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  display: inline-block;
-}
-*/

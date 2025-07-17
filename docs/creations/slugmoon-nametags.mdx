@@ -1,0 +1,40 @@
+import GradientText from '@site/src/components/GradientText';
+import BrowserWindow from '@site/src/components/BrowserWindow';
+import Typewriter from '@site/src/components/Typewriter';
+import NumberedList from '@site/src/components/NumberedList';
+import Icon from '@site/src/components/Icon';
+import IframeWindow from '@site/src/components/IframeWindow';
+import Link from '@docusaurus/Link';
+import SlugmoonCallout from '@site/src/components/SlugmoonCallout';
+
+# Slugmoon Nametags
+
+<span className="emoji-like-icon"><img src="/img/icon.png" alt="Slugmoon Emblem" /></span> <GradientText animated>Slugmoon Nametags</GradientText> is a overhead display name system for games. It is designed to be easy to use and integrate into your existing games.
+
+## Features
+
+- :check: Easy to use and integrate.
+- :check: Support for multiple tags on a single player.
+<details>
+  <summary>:info: How can I do this?</summary>
+```lua
+game.ReplicatedStorage.NametagAPI:Fire(Player instance, Tag text, Tag image)
+```
+:::warning
+You cant change the colour of the tag directly, but you can fire the server then change the colour of the tag via your own script.
+
+:info: We will be supporting tag colour changing in the future.
+:::
+</details>
+
+- :book: Well documented.
+
+:check: And way much more! :check:
+
+
+
+ <h1 className="text-3xl font-bold mb-2"> {/* Corrected: changed '3xl' to 'text-3xl' */}
+              <span>
+               :cross: Slugmoon Nametags Public is coming soon! :cross:
+              </span>
+            </h1>

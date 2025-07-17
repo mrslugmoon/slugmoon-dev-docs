@@ -48,37 +48,42 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-           remarkPlugins: [require('./plugins/remark-icon-plugin')],
-
+            remarkPlugins: [
+              require('./plugins/remark-icon-plugin'),
+              // This is where remark-admonitions is correctly added as a plugin
+              [
+                require('remark-admonitions'),
+                {
+                  customTypes: {
+                    slugmoon: {
+                      emoji: '🌕',
+                      // You can optionally add a default title here if you don't want to always type it in markdown:
+                      // title: 'Slugmoon',
+                    },
+                  },
+                },
+              ],
+            ],
           routeBasePath: '/', // Set the base path for the docs
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/mrslugmoon/slugmoon-dev-docs/tree/main/',
-          
         },
         blog: false, // Disable the blog feature for now
-     //   blog: {
-     //    showReadingTime: true,
-    //      feedOptions: {
-    //        type: ['rss', 'atom'],
-     //       xslt: true,
-     //    },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-     //     editUrl:
-      //      'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-      //    onInlineTags: 'warn',
-      //    onInlineAuthors: 'warn',
-      //    onUntruncatedBlogPosts: 'warn',
-       // },
         theme: {
           customCss: './src/css/custom.css',
         },
       }),
     ],
-  ],
+  ], // END of presets array
+
+
+  // This is the correct top-level markdown configuration.
+  // Only include general markdown options here (like mermaid).
+  // Admonition configuration (for custom types) goes in docs.remarkPlugins.
+  markdown: {
+    mermaid: true, // Keep this if you use Mermaid diagrams
+  },
+
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -92,20 +97,16 @@ const config = {
           src: '/img/logo.svg',
         },
         items: [
-         
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
             label: 'Docs',
           },
-        //  {to: '/blog', label: 'Blog', position: 'left'},
-         {to: '/suggestions', label: 'Suggestions', position: 'left'},
+          {to: '/suggestions', label: 'Suggestions', position: 'left'},
           {to: '/slugmoondirectory', label: 'Slugmoon Directory', position: 'left'},
-
           {
             href: 'https://github.com/mrslugmoon/slugmoon-dev-docs',
-
             label: 'GitHub',
             position: 'right',
           },
@@ -114,35 +115,26 @@ const config = {
       algolia: {
       // The application ID provided by Algolia
       appId: 'JS2ZZOVYSK',
-
       // Public API key: it is safe to commit it
       apiKey: '5067c0ca60c0904fbc4305d6a9c425e0',
-
       indexName: 'Docs',
-
       // Optional: see doc section below
       contextualSearch: true,
-
       // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-     // externalUrlRegex: 'external\\.com|domain\\.com',
-
+      // externalUrlRegex: 'external\\.com|domain\\.com',
       // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
       replaceSearchResultPathname: {
         from: '/docs/', // or as RegExp: /\/docs\//
         to: '/',
       },
-
       // Optional: Algolia search parameters
       searchParameters: {},
-
       // Optional: path for search page that enabled by default (`false` to disable it)
       searchPagePath: 'search',
-
       // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
       insights: false,
-
       //... other Algolia params
-    },
+      },
       footer: {
         style: 'dark',
         links: [
@@ -153,7 +145,7 @@ const config = {
                 label: 'CDN',
                 to: 'https://slugmoon.lol',
               },
-               {
+                {
                 label: 'Mail',
                 to: 'https://mail.slugmoon.com',
               },
@@ -173,6 +165,16 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+      },
+      // THIS IS THE THEME CONFIGURATION FOR ADMONITIONS TO MAP CUSTOM TYPES TO COMPONENTS
+      admonitions: {
+        keywords: ['slugmoon'],
+        extendDefaults: true, // This allows you to extend the default types
+        customTypes: {
+          slugmoon: {
+            component: 'Admonition/Type/Slugmoon', // Path relative to src/theme
+          },
+        },
       },
     }),
 };

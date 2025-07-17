@@ -1,0 +1,36 @@
+/* src/theme/Admonition/Type/Slugmoon.module.css */
+
+.slugmoonAdmonition {
+  /* Example background and border colors for your Slugmoon callout */
+  --ifm-code-background: var(--ifm-background-color); /* Inherit background for code blocks within */
+  background-color: var(--ifm-color-warning-lightest); /* A light, soft color */
+  border-color: var(--ifm-color-primary-dark); /* A darker accent for the border */
+  color: var(--ifm-font-color-base); /* Base text color */
+}
+
+/* Styles for the logo image */
+.slugmoonIcon {
+  /* Adjust size as needed */
+  width: 24px;
+  height: 24px;
+  margin-right: 8px; /* Space between logo and title */
+  vertical-align: middle; /* Align with text */
+}
+
+/* Override the default admonition icon styles if necessary */
+.slugmoonAdmonition :global(.admonition-icon) {
+  /* Ensure the icon container doesn't mess with your image */
+  align-self: flex-start; /* Or center, depending on your preference */
+  padding-top: var(--ifm-spacing-vertical); /* Adjust to align with top of text */
+}
+
+/* Style for the title of the admonition */
+.slugmoonAdmonition :global(.admonition-heading) {
+  color: var(--ifm-color-primary-darkest); /* Darker color for the heading */
+}
+
+/* Adjust font size or other properties for content inside */
+.slugmoonAdmonition :global(.admonition-content) {
+  /* Example: Adjust line height */
+  line-height: 1.6;
+}

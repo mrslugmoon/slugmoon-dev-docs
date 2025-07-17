@@ -1,0 +1,46 @@
+/* src/components/SlugmoonCallout/styles.module.css */
+
+.slugmoonCalloutContainer {
+  /* Use Docusaurus's warning background for consistency */
+  background-color: var(--ifm-color-warning-secondary-background);
+  /* Use Docusaurus's warning color for the left border */
+  border-left: 5px solid var(--ifm-color-warning);
+  border-radius: var(--ifm-spacing-s); /* Apply border-radius from Docusaurus variables */
+  padding: var(--ifm-spacing-m);
+  margin: var(--ifm-spacing-m) 0; /* Add top/bottom margin for spacing */
+  box-shadow: var(--ifm-shadow-low); /* Add a subtle shadow */
+  color: var(--ifm-font-color-base); /* Ensure text is readable against the background */
+  /* If you want the text content to have specific padding inside the box, add it here */
+  /* For example: padding: 1rem; */
+}
+
+.slugmoonCalloutHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--ifm-spacing-s); /* Spacing between header and content */
+  font-weight: bold;
+  /* Use Docusaurus's warning text color for the header if desired, or keep base */
+  color: var(--ifm-color-warning-dark); /* A darker warning color for text */
+}
+
+.slugmoonIcon {
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+  margin-right: var(--ifm-spacing-s); /* Space between icon and title */
+  /* If your icon is an SVG image, and you want it to match the warning color */
+  /* You might need to apply a filter to change its color to match --ifm-color-warning */
+  /* Example filter for changing SVG color (adjust values as needed for your SVG) */
+  /* filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(30deg) brightness(120%); */
+}
+
+.slugmoonCalloutTitle {
+  font-size: var(--ifm-font-size-h3); /* Adjust font size, e.g., similar to h3 */
+  text-transform: uppercase; /* Make the title uppercase */
+  color: var(--ifm-color-warning-dark); /* Match header text color */
+}
+
+.slugmoonCalloutContent {
+  /* Styling for the content area below the header */
+  font-size: var(--ifm-font-size-base);
+  line-height: 1.6;
+}

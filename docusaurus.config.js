@@ -49,9 +49,12 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
             remarkPlugins: [
-              require('./plugins/remark-icon-plugin'),
+              require('./plugins/remark-icon-plugin') // NO COMMA HERE IF THE NEXT LINE IS COMMENTED OUT!
               // This is where remark-admonitions is correctly added as a plugin
-             {/* [
+              // If you want to disable it, uncomment the entire block:
+              /*
+              , // If you uncomment this block, make sure to add this comma back
+              [ // This is an array for a plugin that takes options
                 require('remark-admonitions'),
                 {
                   customTypes: {
@@ -62,7 +65,8 @@ const config = {
                     },
                   },
                 },
-              ],*/},
+              ],
+              */
             ],
           routeBasePath: '/', // Set the base path for the docs
           editUrl:

@@ -52,7 +52,7 @@ const config = {
               require('./plugins/remark-icon-plugin'),
               // This is where remark-admonitions is correctly added as a plugin
               [
-                require('remark-admonitions'),
+               {/* require('remark-admonitions'),*/}
                 {
                   customTypes: {
                     slugmoon: {
